@@ -14,7 +14,5 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jstl.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/standard.jar"/>
-	<classpathentry kind="lib" path="C:/Users/pbyc9/OneDrive/바탕 화면/JAR/REngine.jar"/>
-	<classpathentry kind="lib" path="C:/Users/pbyc9/OneDrive/바탕 화면/JAR/Rserve.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
