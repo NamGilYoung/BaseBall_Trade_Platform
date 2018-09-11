@@ -1,0 +1,115 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font: 14px/1 'Open Sans', sans-serif;
+	color: #555;
+	background:
+		url(https://thesundevils.com/images/2017/5/4/____PV33990.JPG)
+		no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.gallery {
+	width: 1060px;
+	margin: 0 auto;
+	padding: 5px;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+}
+
+.gallery>div {
+	position: relative;
+	float: left;
+	padding: 5px;
+}
+
+.gallery>div>img {
+	display: block;
+	width: 200px;
+	transition: .1s transform;
+	transform: translateZ(0); /* hack */
+}
+
+.gallery>div>a {
+	display: block;
+	width: 200px;
+	transition: .1s transform;
+	transform: translateZ(0); /* hack */
+}
+
+.gallery>div>a>img {
+	display: block;
+	width: 200px;
+	transition: .1s transform;
+	transform: translateZ(0); /* hack */
+}
+
+.gallery>div:hover {
+	z-index: 1;
+}
+
+.gallery>div:hover>img {
+	transform: scale(1.7, 1.7);
+	transition: .3s transform;
+}
+
+.gallery>div:hover>a {
+	transform: scale(1.7, 1.7);
+	transition: .3s transform;
+}
+
+.cf:before, .cf:after {
+	display: table;
+	content: "";
+	line-height: 0;
+}
+
+.cf:after {
+	clear: both;
+}
+
+h1 {
+	margin: 40px 0;
+	font-size: 30px;
+	font-weight: 300;
+	text-align: center;
+}
+
+/* 제목 */
+h3 {
+	text-align: center;
+	font: 800 1.5rem Montserrat, sans-serif;
+	letter-spacing: -0.07ex;
+}
+
+h4 {
+	text-align: center;
+	font: 800 4rem Montserrat, sans-serif;
+	letter-spacing: -0.07ex;
+	animation: anim 1.5s infinite alternate ease-in-out;
+	color: #651727;
+}
+
+h5 {
+	text-align: center;
+	font: 800 0.5rem Montserrat, sans-serif;
+	letter-spacing: -0.07ex;
+	animation: anim 1.5s infinite alternate ease-in-out;
+}
+
+@
+keyframes anim {from { text-shadow:005pxtransparent;
+	
+}
+
+to {
+	text-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+}
+}
