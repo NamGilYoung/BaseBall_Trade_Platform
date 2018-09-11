@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import command.PlayerCommand;
 import command.PlayerListCommand;
+import command.PlayerListDetailCommand;
+import command.TeamCommand;
 
 /**
  * Servlet implementation class BaseController
@@ -41,6 +43,7 @@ public class BaseController extends HttpServlet {
 
 		// Command 객체 추가 부분
 		PlayerCommand pCommand = null;
+		TeamCommand tCommand = null;
 
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
@@ -55,7 +58,10 @@ public class BaseController extends HttpServlet {
 			viewPage = "PlayerSelect.jsp";
 			break;
 
-		case ("2"):
+		case ("/PListViewDetail.nam"):
+			pCommand = new PlayerListDetailCommand();
+			pCommand.execute(request,response);
+			viewPage = "PlayerSelectDetail.jsp";
 			break;
 		}
 
@@ -73,5 +79,4 @@ public class BaseController extends HttpServlet {
 		doGet(request, response);
 	}
 
-	
 }

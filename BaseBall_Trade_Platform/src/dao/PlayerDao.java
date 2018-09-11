@@ -32,7 +32,7 @@ public class PlayerDao {
 		try {
 			conn = dataSource.getConnection();
 
-			String query = "select player.backNum, player.playerName, player.position from team, player where team.tIdx = player.team and player.team = ?";
+			String query = "select backNum, ";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, team);
 
@@ -62,5 +62,37 @@ public class PlayerDao {
 			}
 		}
 		return pdtos;
+	}
+
+	public ArrayList<PlayerDto> getPlayerDetailInfo(int teamIdx, String playerName) {
+		ArrayList<PlayerDto> alpdto = new ArrayList<PlayerDto>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = dataSource.getConnection();
+
+			String query = "select player.backNum, player.playerName, player.position from final.player where player.team = ? and player.playerName = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, teamIdx);
+			pstmt.setString(2, playerName);
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				int backNum = rs.getInt("backNum");
+				String playerName2 = rs.getString("playerName");
+				String position = rs.getString("position");
+
+				PlayerDto pdto = new PlayerDto(backNum, playerName2, position);
+				alpdto.add(pdto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+		}
+
+		return alpdto;
 	}
 }

@@ -52,4 +52,37 @@ public class TeamDao {
 		}
 		return teamName;
 	}
+
+	public int getTeamIdx(String teamName) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int teamIdx = 0;
+		try {
+			conn = dataSource.getConnection();
+
+			String query = "select tIdx from team where tName = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, teamName);
+
+			rs = pstmt.executeQuery();
+			rs.next();
+			teamIdx = rs.getInt("tidx");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return teamIdx;
+	}
 }
