@@ -10,11 +10,11 @@
 </head>
 
 <body>
-	까꿍
+
 	<%
-	String tname = (String) session.getAttribute("tname");
-%>
-	<%=tname%>
+		String tname = (String) session.getAttribute("tname");
+	%>
+
 
 	<div class="div-test">
 		<h1>TEAM STATUS</h1>
@@ -34,7 +34,6 @@
 					</tr>
 				</thead>
 				<tbody>
-
 					<c:forEach items="${playerList }" var="pdtos">
 						<tr align="center" height="5">
 							<td>${pdtos.backNum }</td>
@@ -49,4 +48,4 @@
 
 </body>
 </html>
-s
+
