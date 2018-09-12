@@ -32,7 +32,7 @@ public class PlayerDao {
 		try {
 			conn = dataSource.getConnection();
 
-			String query = "select backNum, ";
+			String query = "select player.backNum, player.playerName, player.position from team, player where team.tIdx = player.team and player.team = ?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, team);
 
@@ -64,7 +64,7 @@ public class PlayerDao {
 		return pdtos;
 	}
 
-	public ArrayList<PlayerDto> getPlayerDetailInfo(int teamIdx, String playerName) {
+	public ArrayList<PlayerDto> getPlayerDetailInfo(int teamIdx, int back) {
 		ArrayList<PlayerDto> alpdto = new ArrayList<PlayerDto>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -73,10 +73,11 @@ public class PlayerDao {
 		try {
 			conn = dataSource.getConnection();
 
-			String query = "select player.backNum, player.playerName, player.position from final.player where player.team = ? and player.playerName = ?";
+			String query = "select player.backNum, player.playerName, player.position from player where player.team = "
+					+ teamIdx + " and player.backNum = " + back + "";
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, teamIdx);
-			pstmt.setString(2, playerName);
+//			pstmt.setInt(1, teamIdx);
+			System.out.println(query);
 
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -90,9 +91,17 @@ public class PlayerDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
-
 		return alpdto;
 	}
 }

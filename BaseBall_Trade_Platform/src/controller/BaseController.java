@@ -60,7 +60,7 @@ public class BaseController extends HttpServlet {
 
 		case ("/PListViewDetail.nam"):
 			pCommand = new PlayerListDetailCommand();
-			pCommand.execute(request,response);
+			pCommand.execute(request, response);
 			viewPage = "PlayerSelectDetail.jsp";
 			break;
 		}

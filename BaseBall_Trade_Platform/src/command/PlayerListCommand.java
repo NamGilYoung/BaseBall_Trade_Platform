@@ -15,6 +15,11 @@ public class PlayerListCommand implements PlayerCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		HttpSession session = request.getSession();
 		String tname = request.getParameter("tname");
 
