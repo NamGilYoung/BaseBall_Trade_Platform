@@ -34,7 +34,7 @@
             <tbody>
 
                <c:forEach items="${pitcherList }" var="pdtos">
-                  <tr align="center" height="5">
+                  <tr>
                      <td><a href="PListViewDetail.nam?idx=${pdtos.idx }">${pdtos.name }</a></td>
                      <td>${pdtos.position }</td>
                      <td>${pdtos.result }</td>
@@ -43,7 +43,7 @@
                
                
                <c:forEach items="${hitterList }" var="hdtos">
-                  <tr align="center" height="5">
+                  <tr>
                      <td><a href="HListViewDetail.nam?idx=${hdtos.idx }">${hdtos.name }</a></td>
                      <td>${hdtos.position }</td>
                      <td>${hdtos.result }</td>

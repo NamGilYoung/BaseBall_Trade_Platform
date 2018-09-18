@@ -56,23 +56,25 @@ public class BaseController extends HttpServlet {
 		String com = uri.substring(conPath.length());
 
 		switch (com) {
-		
-		case("/reset.nam"):
-			
-			viewPage ="TeamSelect.jsp";
-		
+
+		case ("/Reset.nam"):
+
+			pCommand = new PlayerListResetCommand();
+			pCommand.execute(request, response);
+			viewPage = "AteamSelect.jsp";
+			break;
+
 		case ("/PListView.nam"):
 			// command �궗�슜
 			pCommand = new PlayerListCommand();
 			pCommand.execute(request, response);
 
-//			if (Stage.stage == 0) {
-//				
-//				viewPage = "PlayerSelect.jsp";
-//			}else {
-//				viewPage = "PlayerSelect2.jsp";
-//			}
-			viewPage = "PlayerSelect.jsp";
+			if (Stage.stage == 0) {
+
+				viewPage = "AteamDetail.jsp";
+			} else {
+				viewPage = "BteamDetail.jsp";
+			}
 			break;
 
 		case ("/PListViewDetail.nam"):
@@ -83,8 +85,12 @@ public class BaseController extends HttpServlet {
 			pCommand = new PlayerListDetailCommand();
 			pCommand.execute(request, response);
 
-			viewPage = "PlayerSelectDetail.jsp";
+			if (Stage.stage == 0) {
 
+				viewPage = "AplayerDetail.jsp";
+			} else {
+				viewPage = "BplayerDetail.jsp";
+			}
 			break;
 
 		case ("/HListViewDetail.nam"):
@@ -95,41 +101,43 @@ public class BaseController extends HttpServlet {
 			pCommand = new PlayerListDetailCommand();
 			pCommand.execute(request, response);
 
-			viewPage = "PlayerSelectDetail.jsp";
+			if (Stage.stage == 0) {
 
+				viewPage = "AplayerDetail.jsp";
+			} else {
+				viewPage = "BplayerDetail.jsp";
+			}
 			break;
 
 		case ("/Result.nam"):
 
+			pCommand = new ResultCommand();
+			pCommand.execute(request, response);
+			viewPage = "Result.jsp";
 			break;
 
-		case ("/main.nam"):
+			
+
+		case ("/Home.nam"):
 
 			Stage.stage = 0;
 			System.out.println("초기화면으로 가는중  :stage =" + Stage.stage);
-			pCommand = new PlayerListResetCommand();
-			pCommand.execute(request, response);
-			viewPage = "Main.jsp";
+
+			viewPage = "Home.jsp";
 
 			break;
 
 		case ("/TeamSelect.nam"):
 
-			if (Stage.stage == 0) {
-				Stage.stage = 1;
-				System.out.println("첫팀 선택후 다시 팀선택으로 가는중 : stage =" + Stage.stage);
-				viewPage = "TeamSelect.jsp";
-				break;
-			} else if (Stage.stage == 1) {
-				pCommand = new ResultCommand();
-				pCommand.execute(request, response);
-				viewPage = "Result.jsp";
-				break;
-			}
-		}
-			
+			Stage.stage = 1;
+			System.out.println("첫팀 선택후 다시 팀선택으로 가는중 : stage =" + Stage.stage);
+			viewPage = "BteamSelect.jsp";
+			break;
 
-	RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);dispatcher.forward(request,response);
+		}
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+		dispatcher.forward(request, response);
 	}
 
 	/**

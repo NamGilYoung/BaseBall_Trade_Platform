@@ -20,6 +20,8 @@ public class ResultCommand implements PlayerCommand {
 		// TODO Auto-generated method stub
 
 		HttpSession session = request.getSession();
+		
+		Stage.COUNT ++;
 
 		String section = Stage.player_position + Stage.player2_position;
 		

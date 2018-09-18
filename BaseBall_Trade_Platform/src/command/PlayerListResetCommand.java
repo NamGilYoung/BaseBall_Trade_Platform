@@ -19,26 +19,26 @@ public class PlayerListResetCommand implements PlayerCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 
-		HttpSession session = request.getSession();
+//		HttpSession session = request.getSession();
+//
+//		String section = Stage.player_position + Stage.player2_position;
+//
+//		String abName = (String) session.getAttribute("tname");
+//		String abName2 = (String) session.getAttribute("tname2");
+//
+//
+//		int tname = tdao.getTeamIdx(abName);
+//		int tname2 = tdao.getTeamIdx(abName2);
+//
+//		String StringIdx = String.valueOf(session.getAttribute("idx"));
+//		String StringIdx2 = String.valueOf(session.getAttribute("idx2"));
+//
+//		int idx = Integer.parseInt(StringIdx);
+//		int idx2 = Integer.parseInt(StringIdx2);
 
-		String section = Stage.player_position + Stage.player2_position;
 
-		String abName = (String) session.getAttribute("tname");
-		String abName2 = (String) session.getAttribute("tname2");
 
 		TeamDao tdao = new TeamDao();
-
-		int tname = tdao.getTeamIdx(abName);
-		int tname2 = tdao.getTeamIdx(abName2);
-
-		String StringIdx = String.valueOf(session.getAttribute("idx"));
-		String StringIdx2 = String.valueOf(session.getAttribute("idx2"));
-
-		int idx = Integer.parseInt(StringIdx);
-		int idx2 = Integer.parseInt(StringIdx2);
-
-
-
 		PitcherDao pdao = new PitcherDao();
 		HitterDao hdao = new HitterDao();
 		

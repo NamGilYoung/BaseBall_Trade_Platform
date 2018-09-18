@@ -88,9 +88,7 @@ public class PlayerListDetailCommand implements PlayerCommand {
 			session.setAttribute("idx2", idx);
 		}
 		
-		System.out.println("스테이지 i ="+Stage.i);
-		Stage.i ++;
-		System.out.println("playListDetail에서의 stage 값 :"+Stage.stage);
+		
 
 	}
 

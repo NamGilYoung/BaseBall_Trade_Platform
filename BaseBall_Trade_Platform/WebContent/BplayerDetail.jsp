@@ -2,18 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<%String before_rate = (String) request.getAttribute("before_rate");
-String after_rate = (String) request.getAttribute("after_rate");
-
-%>
 <html lang="en">
 <head>
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
-<title>4page</title>
+<title>3page</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-
 @import url(https://fonts.googleapis.com/css?family=Raleway:600);
 body { 
 background: #0A122A; 
@@ -28,17 +23,6 @@ background: #0A122A;
   margin: 50px 350px;  
 }
 
-center{
-  color: #0A122A;
-  font-family: 'Raleway', sans-serif;
-  font-size: 32px;
-  font-weight: 900;
-  text-transform: uppercase;
-  text-align: center;
-  letter-spacing: 0.3ex;
-  text-transform: uppercase;
-  margin: 5px;
-}
 
 header {
    background: #0A122A;
@@ -50,9 +34,7 @@ header {
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 0.3ex;
-  margin: 50px;
 }
-
 
 .text{
   color: #fff;
@@ -75,9 +57,9 @@ nav {
 }
 
 section {
-   background: #fff;
+   background: #ABABAB;
    border: 0px solid #fff;
-   border-radius:0px;
+   border-radius:5px;
    grid-area: section;
    height: auto;
 }
@@ -109,138 +91,52 @@ nav, footer1, footer2 {
   color: #f61;
 }
 
-
-$colorBlue: rgb(56, 177, 204);
-$colorGreen: rgb(44, 178, 153);
-$colorViolet: rgb(142, 93, 159);
-
-.box {
-  float: left;
-  background: rgba(0,0,0,0.13);
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
+table {
+font-family: 'Nanum Gothic', sans-serif;
+font-weight: 700;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  margin: auto;
+  background: #fff;
   border-radius: 4px;
-  padding: 9px 0px;
-  font-size: 12px;
+}
+th,
+td {
+  padding: 6px 15px;
+  text-align: center;
+}
+th {
+  background: #0A122A;
+  color: #fff;
+  text-align: center;
+  height: 25px;
+}
+tr:first-child th:first-child {
+  border-top-left-radius: 4px;
+}
+tr:first-child th:last-child {
+  border-top-right-radius: 4px;
+}
+td {
+  border-right: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+td:first-child {
+  border-left: 1px solid transparent;
+}
+tr:nth-child(even) td {
+  background: #eaeaed;
+}
+tr:last-child td:first-child {
+  border-bottom-left-radius: 4px;
+}
+tr:last-child td:last-child {
+  border-bottom-right-radius: 4px;
 }
 
-.skillBarContainer {
-  width: 900px;
-  max-width: 350px;
-  height:30px;
-  background: #e6eae3;
-  background: rgba(8,102,220,.2);
-  overflow: hidden;
-  border-radius:5px;
-  margin: auto;
-  margin-bottom: 1px;
-}
-
-
-.skillBarContainer.green {
-   background: #e6eae3;;
-   background: rgb(29, 53, 124,.2);
-   overflow: hidden;
-   border-radius:5px;
-   margin: auto;
-   margin-bottom: 5px;
-}
-
-.skillBarContainer.violet {
-   background: #e6eae3;;
-   background:rgb(255, 92, 51,.2);
-   overflow: hidden;
-   border-radius:5px;
-   margin: auto;
-   margin-bottom: 5px;
-}
-
-
-
-.skillBarValue {
- height:100%;
-  float: left;
-  background:rgba(8,102,220);
-  background: rgba(8,102,220,.75);
-  text-align: right; /* Right-align text */
-  color: white; /* White text color */
-  margin: auto;
-}
-
-
-.skillBarValue.green {
-  float: left;
-  background:$colorGreen;
-  background: rgb(29, 53, 124,.75);
-  margin: auto;
-  font-size: 20px;
-}
-
-.skillBarValue.violet {
-  float: left;
-  background:$colorViolet;
-  background: rgb(255, 92, 51,.75);
-  margin: auto;
-  font-size: 20px;
-}
-
-
-/* Allowed values for the css skill bars */
-.value-00  { width: 0;    }
-.value-05  { width: 5%;    }
-.value-10  { width: 10%;  }
-.value-15  { width: 15%;  }
-.value-20  { width: 20%;  }
-.value-25  { width: 25%;  }
-.value-30  { width: 30%;  }
-.value-35  { width: 35%;  }
-.value-40  { width: 40%;  }
-.value-45  { width: 45%;  }
-.value-50  { width: 50%;  }
-.value-55  { width: 55%;  }
-.value-60  { width: 60%;  }
-.value-65  { width: 65%;  }
-.value-70  { width: 70%;  }
-.value-75  { width: 75%;  }
-.value-80  { width: 80%;  }
-.value-85  { width: 85%;  }
-.value-90  { width: 90%;  }
-.value-95  { width: 95%;  }
-.value-100 { width: 100%; }
-
-/*///////////////////////////////////////////////////
-    // Animation \\ 
-///////////////////////////////////////////////////*/
-@-webkit-keyframes slideIn {
-  0% { width: 0; }
-  25% { width:100%; }
-  100% { width: normal; }
-}
-@-moz-keyframes slideIn {
-  0% { width: 0; }
-  25% { width:100%; }
-  100% { width: normal; }
-}
-@-ms-keyframes slideIn {
-  0% { width: 0; }
-  25% { width:100%; }
-  100% { width: normal; }
-}
-@-o-keyframes slideIn {
-  0% { width: 0; }
-  25% { width:100%; }
-  100% { width: normal; }
-}
-@keyframes slideIn {
-  0% { width: 0; }
-  25% { width:100%; }
-  100% { width: normal; }
-}
-.skillBarValue {
-  -webkit-animation: slideIn 2s;
-  -moz-animation: slideIn 2s;
-  -o-animation: slideIn 2s;
-  animation: slideIn 2s;
+td{
+height: 100px;
 }
 
 .button {
@@ -327,49 +223,60 @@ $colorViolet: rgb(142, 93, 159);
   right: 0;
 }
 
+.div-wrapper {
+  background: transparent;
+  border: 0;
+  margin: 0 auto;
+  padding: 10px;
+  width: 900px;
+  vertical-align: middle;
+}
 </style>
 </head>
 <body>
+
 <header><div class= "text" data-speed="150" data-period="2000"
     data-type='[ 
-                  "RESULT"
+                  "PLAYER"
                 ]'></div></header>
-  <section>
-  <%if(Double.parseDouble(before_rate) <Double.parseDouble (after_rate)){ %>
-  <center>before</center>
-    <div class="skillBarContainer green">
-      <div class="skillBarValue green value-55"><%=before_rate %>%&nbsp&nbsp</div>
-    </div>   
-    <br>
-    <br>
-  <center>after</center>
-    <div class="skillBarContainer violet">
-      <div class="skillBarValue violet value-80"><%=after_rate %>%&nbsp&nbsp</div>
-      <%}else{ %>>
-      
-       <center>before</center>
-    <div class="skillBarContainer green">
-      <div class="skillBarValue green value-80"><%=before_rate %>%&nbsp&nbsp</div>
-    </div>   
-    <br>
-    <br>
-  <center>after</center>
-    <div class="skillBarContainer violet">
-      <div class="skillBarValue violet value-55"><%=after_rate %>%&nbsp&nbsp</div>
-      <%} %>
-    </div>
-    <BR>
-    </section>
-</body>
-<BR>
-<BR>
+<section>
 
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+      <c:forEach items="${playerDetail }" var="alpdto">
+            <tr align="center" height="5">
+               
+               <td>${alpdto.name }</td>
+               <td>${alpdto.position }</td>
+               <td>${alpdto.result }</td>
+            </tr>
+         </c:forEach>
+  
+    
+   
+  </tbody>
+</table>
+</section>
+
+<br>
+<br>
 <center>
-<a href="Home.nam"><button class="button1" style="vertical-align:middle"><span>HOME</span></button></a>
+<a href="Result.nam"><button class="button1" style="vertical-align:middle"><span>CONFIRM</span></button></a>
+</center>
+<center>
+<a href='javascript:history.back()'><button class="button" style="vertical-align:middle"><span>BACK</span></button></a>
 </center>
 
-<script>
+</body>
 
+<script>
 window.onload = function() {
      let elements = document.getElementsByClassName('text');
      for (let i = 0; i < elements.length; ++i) {
