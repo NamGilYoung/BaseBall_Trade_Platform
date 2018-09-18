@@ -11,8 +11,8 @@
 <body>
 	<%
 		String driverName = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://localhost:3306/final";
-		String id = "root";
+		String url = "jdbc:mysql://192.168.100.153:3306/final";
+		String id = "final";
 		String pwd = "0000";
 
 		try {

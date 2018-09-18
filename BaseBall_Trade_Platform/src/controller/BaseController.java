@@ -12,13 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 import command.PlayerCommand;
 import command.PlayerListCommand;
 import command.PlayerListDetailCommand;
+import command.PlayerListResetCommand;
+import command.ResultCommand;
 import command.TeamCommand;
+import stage.Stage;
 
 /**
  * Servlet implementation class BaseController
  */
 @WebServlet("/BaseController")
 public class BaseController extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -41,32 +45,91 @@ public class BaseController extends HttpServlet {
 
 		String viewPage = null;
 
-		// Command 객체 추가 부분
+		// Command 媛앹껜 異붽� 遺�遺�
 		PlayerCommand pCommand = null;
 		TeamCommand tCommand = null;
+		String position = "";
 
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
-		// http://localhost:3030/mvc까지의 영역
+		// http://localhost:3030/mvc源뚯��쓽 �쁺�뿭
 		String com = uri.substring(conPath.length());
 
 		switch (com) {
+		
+		case("/reset.nam"):
+			
+			viewPage ="TeamSelect.jsp";
+		
 		case ("/PListView.nam"):
-			// command 사용
+			// command �궗�슜
 			pCommand = new PlayerListCommand();
 			pCommand.execute(request, response);
+
+//			if (Stage.stage == 0) {
+//				
+//				viewPage = "PlayerSelect.jsp";
+//			}else {
+//				viewPage = "PlayerSelect2.jsp";
+//			}
 			viewPage = "PlayerSelect.jsp";
 			break;
 
 		case ("/PListViewDetail.nam"):
+
+			position = "pitcher";
+
+			request.setAttribute("position", position);
 			pCommand = new PlayerListDetailCommand();
 			pCommand.execute(request, response);
-			viewPage = "PlayerSelectDetail.jsp";
-			break;
-		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
-		dispatcher.forward(request, response);
+			viewPage = "PlayerSelectDetail.jsp";
+
+			break;
+
+		case ("/HListViewDetail.nam"):
+
+			position = "hitter";
+
+			request.setAttribute("position", position);
+			pCommand = new PlayerListDetailCommand();
+			pCommand.execute(request, response);
+
+			viewPage = "PlayerSelectDetail.jsp";
+
+			break;
+
+		case ("/Result.nam"):
+
+			break;
+
+		case ("/main.nam"):
+
+			Stage.stage = 0;
+			System.out.println("초기화면으로 가는중  :stage =" + Stage.stage);
+			pCommand = new PlayerListResetCommand();
+			pCommand.execute(request, response);
+			viewPage = "Main.jsp";
+
+			break;
+
+		case ("/TeamSelect.nam"):
+
+			if (Stage.stage == 0) {
+				Stage.stage = 1;
+				System.out.println("첫팀 선택후 다시 팀선택으로 가는중 : stage =" + Stage.stage);
+				viewPage = "TeamSelect.jsp";
+				break;
+			} else if (Stage.stage == 1) {
+				pCommand = new ResultCommand();
+				pCommand.execute(request, response);
+				viewPage = "Result.jsp";
+				break;
+			}
+		}
+			
+
+	RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);dispatcher.forward(request,response);
 	}
 
 	/**
