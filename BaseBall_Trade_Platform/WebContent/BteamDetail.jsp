@@ -191,7 +191,7 @@ img:hover {
 </head>
 <body>
  <%
-      String tname = (String) session.getAttribute("tname");
+      String tname = (String) session.getAttribute("tname2");
    %>
 <!-- Note: This example only works with Windows Insider Preview Builds 16237+. -->
 <header><div class= "text" data-speed="150" data-period="2000"
