@@ -253,4 +253,36 @@ public class TeamDao {
 
 		
 }
+
+	public String getTeamName2(int tname) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String name = null;
+		try {
+			conn = dataSource.getConnection();
+
+			String query = "select name from team_2018 where idx = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, tname);
+
+			rs = pstmt.executeQuery();
+			rs.next();
+			name = rs.getString("name");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return name;
+	}
 }

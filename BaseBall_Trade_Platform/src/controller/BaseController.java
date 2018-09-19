@@ -15,6 +15,7 @@ import command.PlayerListDetailCommand;
 import command.PlayerListResetCommand;
 import command.ResultCommand;
 import command.TeamCommand;
+import command.TeamContinueCommand;
 import stage.Stage;
 
 /**
@@ -69,7 +70,7 @@ public class BaseController extends HttpServlet {
 			pCommand = new PlayerListCommand();
 			pCommand.execute(request, response);
 
-			if (Stage.stage == 0) {
+			if (Stage.STAGE == 0) {
 
 				viewPage = "AteamDetail.jsp";
 			} else {
@@ -85,7 +86,7 @@ public class BaseController extends HttpServlet {
 			pCommand = new PlayerListDetailCommand();
 			pCommand.execute(request, response);
 
-			if (Stage.stage == 0) {
+			if (Stage.STAGE == 0) {
 
 				viewPage = "AplayerDetail.jsp";
 			} else {
@@ -101,7 +102,7 @@ public class BaseController extends HttpServlet {
 			pCommand = new PlayerListDetailCommand();
 			pCommand.execute(request, response);
 
-			if (Stage.stage == 0) {
+			if (Stage.STAGE == 0) {
 
 				viewPage = "AplayerDetail.jsp";
 			} else {
@@ -113,15 +114,15 @@ public class BaseController extends HttpServlet {
 
 			pCommand = new ResultCommand();
 			pCommand.execute(request, response);
-			viewPage = "Result.jsp";
+			viewPage = "Result2.jsp";
 			break;
 
 			
 
 		case ("/Home.nam"):
 
-			Stage.stage = 0;
-			System.out.println("초기화면으로 가는중  :stage =" + Stage.stage);
+			Stage.STAGE = 0;
+			System.out.println("초기화면으로 가는중  :stage =" + Stage.STAGE);
 
 			viewPage = "Home.jsp";
 
@@ -129,9 +130,18 @@ public class BaseController extends HttpServlet {
 
 		case ("/TeamSelect.nam"):
 
-			Stage.stage = 1;
-			System.out.println("첫팀 선택후 다시 팀선택으로 가는중 : stage =" + Stage.stage);
+			Stage.STAGE = 1;
+			System.out.println("첫팀 선택후 다시 팀선택으로 가는중 : stage =" + Stage.STAGE);
 			viewPage = "BteamSelect.jsp";
+			break;
+			
+		case ("/Countinue.nam"):
+			
+			tCommand = new TeamContinueCommand();
+			tCommand.execute(request, response);
+			System.out.println("command사용가능");
+			viewPage = "AteamDetail.jsp";
+			
 			break;
 
 		}

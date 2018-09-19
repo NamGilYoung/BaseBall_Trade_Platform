@@ -36,7 +36,7 @@ public class PitcherDao {
       try {
          conn = dataSource.getConnection();
 
-         String query = "select idx, name, position, result from player_pitcher_2018 where team = ?";
+         String query = "select idx, name, position, result from player_pitcher_2019 where team = ? order by name";
          pstmt = conn.prepareStatement(query);
          pstmt.setInt(1, team);
 
@@ -79,8 +79,8 @@ public ArrayList<PitcherDto> getPitcherDetailInfo(int teamIdx, int idx) {
 	try {
 		conn = dataSource.getConnection();
 
-		String query = "select player_pitcher_2018.idx, player_pitcher_2018.name, player_pitcher_2018.position, player_pitcher_2018.result from player_pitcher_2018 where player_pitcher_2018.team = "
-				+ teamIdx + " and player_pitcher_2018.idx = " + idx + "";
+		String query = "select player_pitcher_2019.idx, player_pitcher_2019.name, player_pitcher_2019.position, player_pitcher_2019.result from player_pitcher_2019 where player_pitcher_2019.team = "
+				+ teamIdx + " and player_pitcher_2019.idx = " + idx + "";
 		pstmt = conn.prepareStatement(query);
 //		pstmt.setInt(1, teamIdx);
 		System.out.println(query);
@@ -414,4 +414,42 @@ public void updateResult_2019(int idx2, double result) {
 	
 }
 
+public String getPlayerName(int idx) {
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	String name ="";
+
+	try {
+		conn = dataSource.getConnection();
+
+		String query = "select name from player_pitcher_2019 where idx = ?";
+		pstmt = conn.prepareStatement(query);
+		pstmt.setInt(1, idx);
+		System.out.println(query);
+		
+
+		rs = pstmt.executeQuery();
+		while (rs.next()) {
+			name = rs.getString("name");
+
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (Exception e2) {
+			e2.printStackTrace();
+		}
+	}
+	return name;
+
+}
 }

@@ -19,7 +19,7 @@ public class PlayerListResetCommand implements PlayerCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 
-//		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 //
 //		String section = Stage.player_position + Stage.player2_position;
 //
@@ -37,7 +37,7 @@ public class PlayerListResetCommand implements PlayerCommand {
 //		int idx2 = Integer.parseInt(StringIdx2);
 
 
-
+		Stage.COUNT =0 ;
 		TeamDao tdao = new TeamDao();
 		PitcherDao pdao = new PitcherDao();
 		HitterDao hdao = new HitterDao();
@@ -47,7 +47,8 @@ public class PlayerListResetCommand implements PlayerCommand {
 		pdao.reset2019();
 		
 		hdao.reset2019();
-
+		
+		session.invalidate();
 
 	}
 

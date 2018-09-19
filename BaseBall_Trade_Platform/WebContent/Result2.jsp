@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%String before_rate = (String) request.getAttribute("before_rate");
 String after_rate = (String) request.getAttribute("after_rate");
 String tname = (String) request.getAttribute("tname");
@@ -21,35 +22,37 @@ background: #0A122A;
    font-family: 'Raleway', sans-serif;
    display: grid;
    grid-template-areas: 
-    "header"
-    "section";
+    "header header"
+    "nav nav"
+    "section2 section"
+    "footer footer";
    grid-template-rows: 1fr;
    grid-template-columns: 1fr;
    grid-gap: 5px;
-  margin: 50px 350px;  
+  margin: 50px 250px;  
 }
-
+k.
 center{
-  color: #0A122A;
+  color: #000;
   font-family: 'Raleway', sans-serif;
   font-size: 32px;
-  font-weight: 900;
+  font-weight: 600;
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 0.3ex;
   text-transform: uppercase;
   margin: 5px;
+  font-color: #fff;
 }
 
 header {
-   background: #0A122A;
+   background: transparent;
    grid-area: header;
      color: #fff;
   font-family: 'Raleway', sans-serif;
   font-size: 52px;
   font-weight: 600;
   text-transform: uppercase;
-  text-align: center;
   letter-spacing: 0.3ex;
   margin: 50px;
 }
@@ -65,14 +68,27 @@ header {
   letter-spacing: 0.3ex;
   text-transform: uppercase;
   text-shadow: 7px 5px rgb(255, 92, 51, 0.7);
+  
+  
 }
 
 
 
 nav {
-   background: #ABABAB;
-   grid-area: nav; 
-   margin: 10px;    
+background: transparent;
+   border: 0px solid #fff;
+   border-radius:0px;
+   grid-area: nav;
+   height: auto;    
+   font-size: 40px;
+   font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.3ex;
+  text-transform: uppercase;
+  margin: 5px;
+  color: #fff;
 }
 
 section {
@@ -81,13 +97,30 @@ section {
    border-radius:0px;
    grid-area: section;
    height: auto;
+   border-radius:4px;
 }
 
-footer1 {
-   background: #0A122A;
-   grid-area: footer1;
-   height: 300px;
-   margin: 1px;
+section2 {
+   background: #ABABAB;
+   border: 0px solid #fff;
+   border-radius:0px;
+   grid-area: section2;
+   height: auto;
+   padding: 20px;
+   margin: 0 0 0 20px;
+   width: 450px;
+   border-radius:4px;
+}
+
+
+footer {
+   background: transparent;
+   border: 0px solid #fff;
+   border-radius:0px;
+   grid-area: footer;
+   height: 30px;
+   margin: 10px;
+   item-align: center;
 }
 
 footer2 {
@@ -103,6 +136,18 @@ header,  section, aside{
 
 nav, footer1, footer2 {
    padding: 0px;
+}
+
+
+centered {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  background: blue;
+  vertical-align: middle;
+     top: 16.5%;
+     margin:0;
+     padding:0px;
 }
 
 .text > span.wrap::after {
@@ -121,29 +166,27 @@ $colorViolet: rgb(142, 93, 159);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  padding: 9px 0px;
   font-size: 12px;
 }
 
 .skillBarContainer {
   width: 900px;
-  max-width: 350px;
+  max-width: 100%;
   height:30px;
   background: #e6eae3;
   background: rgba(8,102,220,.2);
   overflow: hidden;
   border-radius:5px;
-  margin: auto;
+  margin: 0;
   margin-bottom: 1px;
 }
 
 
 .skillBarContainer.green {
-   background: #e6eae3;;
    background: rgb(29, 53, 124,.2);
    overflow: hidden;
    border-radius:5px;
-   margin: auto;
+   margin: 0;
    margin-bottom: 5px;
 }
 
@@ -152,7 +195,7 @@ $colorViolet: rgb(142, 93, 159);
    background:rgb(255, 92, 51,.2);
    overflow: hidden;
    border-radius:5px;
-   margin: auto;
+   margin: 0;
    margin-bottom: 5px;
 }
 
@@ -165,7 +208,7 @@ $colorViolet: rgb(142, 93, 159);
   background: rgba(8,102,220,.75);
   text-align: right; /* Right-align text */
   color: white; /* White text color */
-  margin: auto;
+  margin: 0;
 }
 
 
@@ -173,7 +216,7 @@ $colorViolet: rgb(142, 93, 159);
   float: left;
   background:$colorGreen;
   background: rgb(29, 53, 124,.75);
-  margin: auto;
+  margin: 0;
   font-size: 20px;
 }
 
@@ -181,7 +224,7 @@ $colorViolet: rgb(142, 93, 159);
   float: left;
   background:$colorViolet;
   background: rgb(255, 92, 51,.75);
-  margin: auto;
+  margin: 0;
   font-size: 20px;
 }
 
@@ -328,6 +371,58 @@ $colorViolet: rgb(142, 93, 159);
   right: 0;
 }
 
+table {
+font-family: 'Nanum Gothic', sans-serif;
+font-size: 20px;
+font-weight: 700;
+font-color: #000;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  border-radius:4px;
+}
+th,
+td {
+  padding: 6px 15px;
+  text-align: center;
+  height: 40px;
+}
+th {
+  background: #0A122A;
+  color: #fff;
+  text-align: center;
+}
+tr:first-child th:first-child {
+  border-top-left-radius: 4px;
+}
+tr:first-child th:last-child {
+  border-top-right-radius: 4px;
+}
+td {
+  border-right: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+td:first-child {
+  border-left: 1px solid transparent;
+}
+tr:nth-child(even) td {
+  background: rgb(234, 234, 237);
+}
+tr:last-child td:first-child {
+  border-bottom-left-radius: 4px;
+}
+tr:last-child td:last-child {
+  border-bottom-right-radius: 4px;
+}
+
+
+img {
+   display: block;
+   width: 100%;
+}
+
+
 </style>
 </head>
 <body>
@@ -335,8 +430,41 @@ $colorViolet: rgb(142, 93, 159);
     data-type='[ 
                   "RESULT"
                 ]'></div></header>
+  <nav>
+   Hello, <%=tname %>
+  </nav>
+  
+  <section2>
+  <div class="centered">
+<center>You are trading ..</center>
+<br>
+<table>
+<tbody>
+    
+    
+     <c:forEach items="${tpal }" var="traded">
+                  <tr>
+                     <td>${traded.playerName }</td>
+                      <td>↔</td>
+                     <td>${traded.playerName2 }</td>
+                  </tr>
+               </c:forEach>
+    
+   
+  </tbody>
+</table>
+</div>
+
+</section2>
+  
+  
+  
+  
+  
+  
   <section>
-  <%if(Double.parseDouble(before_rate) <Double.parseDouble (after_rate)){ %>
+  <div class="centered">
+    <%if(Double.parseDouble(before_rate) <Double.parseDouble (after_rate)){ %>
   <center>before</center>
     <div class="skillBarContainer green">
       <div class="skillBarValue green value-55"><%=before_rate %>%&nbsp&nbsp</div>
@@ -346,7 +474,7 @@ $colorViolet: rgb(142, 93, 159);
   <center>after</center>
     <div class="skillBarContainer violet">
       <div class="skillBarValue violet value-80"><%=after_rate %>%&nbsp&nbsp</div>
-      <%}else{ %>>
+      <%}else{ %>
       
        <center>before</center>
     <div class="skillBarContainer green">
@@ -359,16 +487,16 @@ $colorViolet: rgb(142, 93, 159);
       <div class="skillBarValue violet value-55"><%=after_rate %>%&nbsp&nbsp</div>
       <%} %>
     </div>
-    <BR>
     </section>
-</body>
-<BR>
-<BR>
 
+<footer>
 <center>
 <a href="Home.nam"><button class="button1" style="vertical-align:middle"><span>HOME</span></button></a>
 </center>
+</footer>
 
+<
+</body>
 <script>
 
 window.onload = function() {
@@ -409,7 +537,7 @@ window.onload = function() {
        this.isClearing = false;
        delta = this.period / 2;
      }
-     setTimeout(() = this.tick(), delta);
+     setTimeout(() => this.tick(), delta);
    };
 
 </script>

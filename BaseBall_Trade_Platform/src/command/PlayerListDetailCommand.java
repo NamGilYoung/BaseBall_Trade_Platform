@@ -32,7 +32,7 @@ public class PlayerListDetailCommand implements PlayerCommand {
 		String abName = "";		
 		int idx = Integer.parseInt(request.getParameter("idx"));
 		
-		if(Stage.stage == 0) {
+		if(Stage.STAGE == 0) {
 			abName = (String) session.getAttribute("tname");
 		}else {
 			abName = (String) session.getAttribute("tname2");
@@ -52,10 +52,10 @@ public class PlayerListDetailCommand implements PlayerCommand {
 			ArrayList<PitcherDto> alpdto = pdao.getPitcherDetailInfo(teamIdx, idx);
 		request.setAttribute("playerDetail", alpdto);
 		
-		if(Stage.stage == 0) {
-			Stage.player_position = "0";
+		if(Stage.STAGE == 0) {
+			Stage.PLAYER_POSITION = "0";
 		}else {
-			Stage.player2_position ="0";
+			Stage.PLAYER_POSITION2 ="0";
 		}
 		
 			break;
@@ -67,10 +67,10 @@ public class PlayerListDetailCommand implements PlayerCommand {
 			ArrayList<HitterDto> alhdto = hdao.getHitterDetailInfo(teamIdx, idx);
 		request.setAttribute("playerDetail", alhdto);
 		
-		if(Stage.stage == 0) {
-			Stage.player_position = "1";
+		if(Stage.STAGE == 0) {
+			Stage.PLAYER_POSITION = "1";
 		}else {
-			Stage.player2_position ="1";
+			Stage.PLAYER_POSITION2 ="1";
 		}
 		
 			break;
@@ -81,7 +81,7 @@ public class PlayerListDetailCommand implements PlayerCommand {
 		
 		
 		
-		if(Stage.stage == 0) {
+		if(Stage.STAGE == 0) {
 			session.setAttribute("idx", idx);
 			
 		}else {

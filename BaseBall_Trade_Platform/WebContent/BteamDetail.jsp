@@ -4,9 +4,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 <title>2page</title>
 <meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -23,11 +23,11 @@ background: #0A122A;
    font-family: 'Raleway', sans-serif;
    display: grid;
    grid-template-areas: 
-    "header header"
-    "nav section"
-    "footer2 footer2";
+    "header header header"
+    "nav section section2"
+    "footer2 footer2 footer2";
    grid-template-rows: 130px 1fr 50px;
-   grid-template-columns: 25% 1fr;
+   grid-template-columns: 20% 1fr 40%;
    grid-gap: 5px;
   height: 100vh;
   margin: 50px 350px;  
@@ -44,6 +44,19 @@ header {
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 0.3ex;
+}
+
+center{
+  color: #000;
+  font-family: 'Raleway', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.3ex;
+  text-transform: uppercase;
+  margin: 5px;
+  font-color: #fff;
 }
 
 .text{
@@ -73,6 +86,15 @@ section {
    height: auto;
 }
 
+section2 {
+   background: #ABABAB;
+   border: 0px solid #fff;
+   border-radius:4px;
+   grid-area: section2;
+   margin: 10px; 
+   height: auto;
+}
+
 footer1 {
    background: #0A122A;
    grid-area: footer1;
@@ -87,7 +109,7 @@ footer2 {
    margin: 1px 0px;   
 }
 
-header,  section, aside{
+header,  section, section2, aside{
    padding: 30px;
 }
 
@@ -165,12 +187,10 @@ img:hover {
    transform: scale(1.7, 1.7);
    transition: .3s transform;
 }
-
 </style>
 </head>
 <body>
-
-<%
+ <%
       String tname = (String) session.getAttribute("tname");
    %>
 <!-- Note: This example only works with Windows Insider Preview Builds 16237+. -->
@@ -178,14 +198,38 @@ img:hover {
     data-type='[ 
                   "TEAM STATUS"
                 ]'></div></header>
-<nav> <img src='./Team_card/Team_card_<%=tname %>.png' onmouseover="this.src='./Team_card/Team_card_<%=tname %>.png'" onmouseout="this.src='./Team_card/Team_card_<%=tname %>.png'">
+<nav> <img src='./Team_card/Team_card_<%=tname %>.png' onmouseover="this.src='./Text_Mining/<%=tname %>.PNG'" onmouseout="this.src='./Team_card/Team_card_<%=tname %>.png'">
 <div id="chartdiv" style="width: 100%; height: 400px; background-color: #0A122A;" ></div>
-
-
-
-
 </nav>
-<section><table>
+<section>
+<center>Hitter</center>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Ability</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+               
+               
+               <c:forEach items="${hitterList }" var="hdtos">
+                  <tr>
+                     <td><a href="HListViewDetail.nam?idx=${hdtos.idx }">${hdtos.name }</a></td>
+                     <td>${hdtos.position }</td>
+                     <td>${hdtos.result }</td>
+                  </tr>
+               </c:forEach>
+    
+   
+  </tbody>
+</table></section>
+
+<section2>
+<center>Pitcher</center>
+<table>
   <thead>
     <tr>
       <th>Name</th>
@@ -203,17 +247,11 @@ img:hover {
                </c:forEach>
                
                
-               <c:forEach items="${hitterList }" var="hdtos">
-                  <tr>
-                     <td><a href="HListViewDetail.nam?idx=${hdtos.idx }">${hdtos.name }</a></td>
-                     <td>${hdtos.position }</td>
-                     <td>${hdtos.result }</td>
-                  </tr>
-               </c:forEach>
+           
     
    
   </tbody>
-</table></section>
+</table></section2>
 </body>
 
 <script>
@@ -260,7 +298,7 @@ window.onload = function() {
 
 </script>
 
-     <script type="text/javascript">
+      <script type="text/javascript">
          Dataplanet.makeChart("chartdiv",
             {
                "type": "radar",
@@ -332,8 +370,6 @@ window.onload = function() {
             }
          );
       </script>
-
-
 
 
 </html>

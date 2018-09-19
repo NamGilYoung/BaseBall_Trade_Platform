@@ -201,18 +201,18 @@ h1 span:nth-child(7) {
 <BR>
 <BR>
 
-<%if( Stage.COUNT == 0) { %>
+<%-- <%if( Stage.COUNT == 0) { %> --%>
 <center>
 <a href="Reset.nam"><button class="button1" style="vertical-align:middle"><span>START</span></button></a>
 </center>
-<%} else { %>
+<%-- <%} else { %>
 <center>
 <a href="Reset.nam"><button class="button1" style="vertical-align:middle"><span>START</span></button></a>
 </center>
 
 <center>
-<a href="AteamSelect.jsp"><button class="button" style="vertical-align:middle"><span>CONTINUE</span></button></a>
+<a href="Continue.nam"><button class="button" style="vertical-align:middle"><span>CONTINUE</span></button></a>
 </center>
-<%} %>
+<%} %> --%>
 </body>
 </html>
